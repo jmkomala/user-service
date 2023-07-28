@@ -1,13 +1,8 @@
-import { FastifyInstance } from "fastify";
-import { createUserHandler, getAllUsersHandler } from "./users-controller";
+import express from "express";
+import { createUserController, getUsersController } from "./users-controller";
+const router = express.Router();
 
-// Export the user controller as a Fastify plugin
-export default function usersController(fastify: FastifyInstance, _opts: any, done: () => void) {
-  // Route for creating a new user
-  fastify.post("/users", createUserHandler);
+router.post("/", createUserController);
+router.get("/", getUsersController);
 
-  // Route for fetching all users
-  fastify.get("/users", getAllUsersHandler);
-
-  done(); // Call done to signal the end of the plugin registration
-}
+export default router;

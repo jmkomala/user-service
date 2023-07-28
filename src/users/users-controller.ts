@@ -1,7 +1,7 @@
 import { getUsers, createUser } from "./users-db";
-import fastify from "fastify";
-// Route handler for creating a new user
-export const createUserHandler = async (_req: any, res: any) => {
+
+// controller for fetching users
+export const getUsersController = async (_req: any, res: any) => {
   try {
     const result = await getUsers();
     res.send(result);
@@ -11,8 +11,8 @@ export const createUserHandler = async (_req: any, res: any) => {
   }
 };
 
-// Route handler for fetching all users
-export const getAllUsersHandler = async (req: any, res: any) => {
+// contoller for creating a user
+export const createUserController = async (req: any, res: any) => {
   try {
     const data = req.body;
     const result = await createUser(data);

@@ -1,22 +1,8 @@
-// consolidate all routes here
+import express from "express";
+import { usersRoutes } from "./users";
 
-import usersRoutes from "./users/users-routes";
+const router = express.Router();
 
-import { FastifyInstance, FastifyPluginCallback } from 'fastify';
-import { Server, IncomingMessage, ServerResponse } from 'http';
-import { RouteGenericInterface } from 'fastify/types/route';
+router.use("/users", usersRoutes);
 
-const routes: FastifyPluginCallback = (
-  fastify: FastifyInstance<Server, IncomingMessage, ServerResponse>,
-  opts, // Add any options required for the route
-  done: (err?: Error) => void
-) => {
-  // Import the userRoutes and pass any required options
-  fastify.register(usersRoutes, opts);
-
-  // Add more routes here if you have other modular route files
-
-  done();
-};
-
-export default routes;
+export default router;

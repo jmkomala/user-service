@@ -1,9 +1,15 @@
-import fastify, { FastifyInstance } from "fastify";
-import userRoutes from "./users/users-routes";
+import express from "express";
+import routes from "./routes";
 
-const app: FastifyInstance = fastify({ logger: true });
+// Step 1: Create an instance of the Express application
+const app = express();
 
-// Register all routes defined in the routes.ts file
-app.register(userRoutes);
+// Step 2: Configure the application middleware (if needed)
+// For example, to parse incoming JSON requests
+app.use(express.json());
 
+// Step 3: Mount your custom routes on the application
+app.use(routes);
+
+// Step 5: Export the Express application
 export default app;

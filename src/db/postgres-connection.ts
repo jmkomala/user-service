@@ -14,6 +14,9 @@ const dbConfig: PoolConfig = {
 };
 
 // create a new Pool instance based on the configuration
+// With a connection pool,the query method  automatically handles
+// acquiring a connection from the pool, executing the query, 
+// and releasing the connection back to the pool when the query is complete
 const pool = new Pool(dbConfig);
 
 // listen to pool events for logging or error handling

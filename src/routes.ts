@@ -1,19 +1,8 @@
-import { FastifyInstance } from "fastify";
+import express from "express";
+import { usersRoutes } from "./users";
 
-const registerRoutes = (fastify: FastifyInstance, _options: any, done: () => void) => {
-  fastify.get("/", async (_request, reply) => {
-    reply.send("Your request went through");
-  });
+const router = express.Router();
 
-  // Add more routes using shorthand methods
-  fastify.post("/example", async (_request, reply) => {
-    reply.send("This is a POST request");
-  });
+router.use("/users", usersRoutes);
 
-  // register routes from feature here
-  // e.g.   fastify.register(someFeatureRoutes);
-
-  done();
-};
-
-export default registerRoutes;
+export default router;

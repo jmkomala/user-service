@@ -1,30 +1,53 @@
 # user-service
 user service for handling user registration and managing user profiles
 folder-by-feature structure
-/src
-  /feature1
-    feature1-controllers.ts
-    feature1-models.ts
-    feature1-routes.ts
-    feature1-service.ts
-    feature1-validation.ts
-    feature1-interfaces.ts
-    feature1-connection.ts
-    /test/feature1-controller.test.ts
-  /common
-    /middlewares
-      authMiddleware.ts
-      validationMiddleware.ts
-    /utils
-      utilityFunction1.ts
-      utilityFunction2.ts
-    /types
-      interfaces.ts
-      types.ts
-      enums.ts
-      constants.ts
-  /db
-    connection.ts
 
+Primary Responsibilities
+   1. User Registration: Handling new user sign-ups and account creation.
+   2. User Profile Management: Allowing users to update their profile information, such as name, email, profile picture, etc.
+   3. Password Management: Enabling users to change/reset passwords and ensuring password security.
+   4. Account Deactivation: Managing the process of deactivating or deleting user accounts.
+   5. User Roles and Permissions: Assigning roles and permissions to users based on their access level within the application.
+   6. User Data Storage: Storing user-related information securely.
 
-docker run -d --name my_postgres_container  -e POSTGRES_USER=admin  -e POSTGRES_PASSWORD=password  -e POSTGRES_DB=mypostgresdb  -p 5432:5432  postgres
+Folder Structure
+user-service
+  ├── src
+  │   ├── users
+  │   │   ├── users-controller.ts
+  │   │   ├── users-db.ts
+  │   │   ├── users-models.ts
+  │   │   ├── users-routes.ts
+  │   │   ├── users-services.ts
+  │   │   ├── users-validators.ts
+  │   ├── profiles
+  │   │   ├── profiles-controller.ts
+  │   │   ├── profiles-db.ts
+  │   │   ├── profiles-models.ts
+  │   │   ├── profiles-routes.ts
+  │   │   ├── profiles-services.ts
+  │   │   ├── profiles-validators.ts  
+  │   ├── common
+  │   │   ├── types
+  │   │   │   ├── interfaces.ts
+  │   │   │   ├── types.ts
+  │   │   │   ├── enums.ts
+  │   │   │   ├── constants.ts
+  │   │   ├── middleware
+  │   │   │   ├── auth-middleware.ts
+  │   │   │   ├── logger-middleware.ts
+  │   │   ├── utils
+  │   │   │   ├── interfaces.ts
+  │   │   │   ├── types.ts
+  │   │   │   ├── enums.ts
+  │   │   │   ├── constants.ts  
+  │   │   ├── logger.ts  
+  │   │   ├── error-handler.ts
+  │   ├── db
+  │   │   ├── postgres-connection.ts  
+  │   ├── app.ts
+  │   └── index.ts
+  ├── package.json
+  ├── tsconfig.json
+  ├── README.md
+  └── ...

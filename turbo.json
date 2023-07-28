@@ -1,0 +1,42 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "remoteCache": {
+    "signature": true
+  },
+  "globalDependencies": ["package.json", "package-lock.json", "tsconfig.json", "tsconfig.*.json"],
+  "globalEnv": ["NODE_VERSION", "NPM_VERSION"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      "dependsOn": [],
+      "cache": false
+    },
+    "clean": {
+      "dependsOn": [],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "test:ci": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "lint": {
+      "dependsOn": [],
+      "outputs": []
+    },
+    "bundlewatch": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "format:check": {
+      "dependsOn": [],
+      "outputs": []
+    }
+  }
+}

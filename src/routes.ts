@@ -1,19 +1,22 @@
-import { FastifyInstance } from "fastify";
+// consolidate all routes here
 
-const registerRoutes = (fastify: FastifyInstance, _options: any, done: () => void) => {
-  fastify.get("/", async (_request, reply) => {
-    reply.send("Your request went through");
-  });
+import usersRoutes from "./users/users-routes";
 
-  // Add more routes using shorthand methods
-  fastify.post("/example", async (_request, reply) => {
-    reply.send("This is a POST request");
-  });
+import { FastifyInstance, FastifyPluginCallback } from 'fastify';
+import { Server, IncomingMessage, ServerResponse } from 'http';
+import { RouteGenericInterface } from 'fastify/types/route';
 
-  // register routes from feature here
-  // e.g.   fastify.register(someFeatureRoutes);
+const routes: FastifyPluginCallback = (
+  fastify: FastifyInstance<Server, IncomingMessage, ServerResponse>,
+  opts, // Add any options required for the route
+  done: (err?: Error) => void
+) => {
+  // Import the userRoutes and pass any required options
+  fastify.register(usersRoutes, opts);
+
+  // Add more routes here if you have other modular route files
 
   done();
 };
 
-export default registerRoutes;
+export default routes;
